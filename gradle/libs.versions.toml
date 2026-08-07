@@ -12,6 +12,8 @@ appcompat = "1.6.1"
 ksp = "2.2.10-2.0.2"
 room = "2.8.4"
 material = "1.10.0"
+androidxHilt = "1.2.0"
+hilt = "2.59.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,10 +35,14 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android" , version.ref = "hilt"}
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler" , version.ref = "hilt"}
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHilt" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref ="hilt" }
 

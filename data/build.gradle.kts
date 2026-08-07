@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.devtools.ksp) // Enable KSP code generation
+    alias(libs.plugins.hiltAndroid)
 }
 
 android {
@@ -36,4 +37,9 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx) // Provides coroutines support
     ksp(libs.androidx.room.compiler)
+
+    // DI dagger hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 }
