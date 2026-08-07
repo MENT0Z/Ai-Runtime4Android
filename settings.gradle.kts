@@ -24,4 +24,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "Ai Runtime"
 include(":app")
- 
+include(":common")
+include(":runtime-core")
+include(":runtime-services")
+include(":llm-adapter")
+include(":tool-adapters")
+include(":data")
