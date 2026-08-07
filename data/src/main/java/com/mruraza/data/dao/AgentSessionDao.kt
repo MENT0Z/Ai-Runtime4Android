@@ -17,7 +17,7 @@ interface AgentSessionDao {
     suspend fun changeAgentSessionStatus(sessionId: String,status: AgentSessionEntity.SessionStatus)
 
     @Query("SELECT * FROM agent_sessions")
-    suspend fun getSessions(): Flow<List<AgentSessionEntity>>
+    fun getSessions(): Flow<List<AgentSessionEntity>>
 
     @Query("SELECT * FROM agent_sessions WHERE sessionId = :sessionId")
     suspend fun getSessionById(sessionId: String): AgentSessionEntity?
