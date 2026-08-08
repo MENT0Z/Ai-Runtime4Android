@@ -24,4 +24,7 @@ interface AgentSessionDao {
 
     @Query("DELETE FROM agent_sessions WHERE sessionId = :sessionId")
     suspend fun deleteAgentSession(sessionId: String)
+
+    @Query("SELECT * FROM agent_sessions WHERE status = :status")
+    fun getActiveSessions(status: AgentSessionEntity.SessionStatus = AgentSessionEntity.SessionStatus.ACTIVE): Flow<List<AgentSessionEntity>>
 }
