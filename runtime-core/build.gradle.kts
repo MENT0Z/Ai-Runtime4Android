@@ -29,4 +29,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+
+    // lets take the common
+    implementation(project(":common"))
 }
