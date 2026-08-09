@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ConversationTurnRepo {
     fun getAllConversationTurnWithSessionId(sessionId: String): Flow<List<ConversationTurn>>
+    suspend fun addConversation(conversation: ConversationTurn)
 }

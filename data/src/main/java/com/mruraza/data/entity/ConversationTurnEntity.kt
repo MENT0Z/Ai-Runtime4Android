@@ -2,6 +2,7 @@ package com.mruraza.data.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.mruraza.common.model.ConversationTurn
 import java.util.UUID
 
 @Entity(tableName = "conversation_history")
@@ -18,6 +19,28 @@ data class ConversationTurnEntity(
         USER,
         ASSISTANT,
         TOOL
+    }
+
+    fun toDomain(): ConversationTurn {
+        return ConversationTurn(
+            conversationId = conversationId,
+            sessionId = sessionId,
+            createdAt = createdAt,
+            role = ConversationTurn.ConversationRole.valueOf(role.name),
+            content = content
+        )
+    }
+
+    companion object{
+        fun fromDomain(domain: ConversationTurn): ConversationTurnEntity {
+            return ConversationTurnEntity(
+                conversationId = domain.conversationId,
+                sessionId = domain.sessionId,
+                createdAt = domain.createdAt,
+                role = ConversationRole.valueOf(domain.role.name),
+                content = domain.content
+            )
+        }
     }
 }
 

@@ -4,9 +4,9 @@ import com.mruraza.common.model.AgentSession
 import com.mruraza.common.repo.AgentSessionRepo
 import com.mruraza.data.dao.AgentSessionDao
 import com.mruraza.data.entity.AgentSessionEntity
-import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 class AgentSessionRepoImpl @Inject constructor(
     private val agentSessionDao: AgentSessionDao

@@ -1,6 +1,8 @@
 package com.mruraza.data.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.mruraza.data.entity.ConversationTurnEntity
 import kotlinx.coroutines.flow.Flow
@@ -9,4 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface ConversationTurnDao {
     @Query("SELECT * FROM conversation_history WHERE sessionId = :sessionId ORDER BY createdAt ASC")
     fun getAllConversationsWithSessionId(sessionId: String): Flow<List<ConversationTurnEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addConversation(conversation: ConversationTurnEntity)
 }
