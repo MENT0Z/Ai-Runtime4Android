@@ -1,6 +1,7 @@
 package com.mruraza.data.entity
 
 import androidx.room.Entity
+import com.mruraza.common.model.UserPreferences
 
 @Entity(tableName = "user_preferences")
 data class UserPreferencesEntity(
@@ -14,6 +15,24 @@ data class UserPreferencesEntity(
         SHORT,
         DEFAULT,
         DETAILED
+    }
+
+    fun toDomain(): UserPreferences = UserPreferences(
+        language = language,
+        timezone = timezone,
+        preferredTone = preferredTone,
+        responseLength = UserPreferences.ResponseLength.valueOf(responseLength.name),
+        preferences = preferences
+    )
+
+    companion object{
+        fun fromDomain(userPreferences: UserPreferences): UserPreferencesEntity = UserPreferencesEntity(
+            language = userPreferences.language,
+            timezone = userPreferences.timezone,
+            preferredTone = userPreferences.preferredTone,
+            responseLength = ResponseLength.valueOf(userPreferences.responseLength.name),
+            preferences = userPreferences.preferences
+        )
     }
 }
 
