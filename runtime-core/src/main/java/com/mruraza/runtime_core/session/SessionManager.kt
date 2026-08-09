@@ -5,6 +5,7 @@ import com.mruraza.common.repo.AgentSessionRepo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import java.util.UUID
+import javax.inject.Inject
 
 /**
  * Manages the lifecycle of agent sessions.
@@ -13,7 +14,7 @@ import java.util.UUID
  * Callers should interact with this manager rather than directly modifying
  * session state through the repository.
  */
-class SessionManager(
+class SessionManager @Inject constructor(
     private val sessionRepo: AgentSessionRepo,
     private val clock: () -> Long = { System.currentTimeMillis() }
 ) {
