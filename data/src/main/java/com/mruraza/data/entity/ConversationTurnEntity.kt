@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.util.UUID
 
 @Entity(tableName = "conversation_history")
-data class ConversationTurn(
+data class ConversationTurnEntity(
     @PrimaryKey(autoGenerate = true)
     val conversationId: Long = 0,
     val sessionId: String = UUID.randomUUID().toString(), // later maps to the correct one

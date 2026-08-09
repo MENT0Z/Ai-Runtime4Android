@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.mruraza.data.dao.AgentSessionDao
 import com.mruraza.data.dao.ConversationTurnDao
+import com.mruraza.data.dao.DeviceContextDao
+import com.mruraza.data.dao.UserPreferencesDao
 import com.mruraza.data.database.AgentDatabase
 import dagger.Module
 import dagger.Provides
@@ -32,4 +34,10 @@ object DatabaseModule{
 
     @Provides
     fun provideAgentSessionDao(db: AgentDatabase): AgentSessionDao = db.agentSessionDao()
+
+    @Provides
+    fun provideUserPreferencesDao(db: AgentDatabase): UserPreferencesDao = db.userPreferencesDao()
+
+    @Provides
+    fun provideDeviceContextDao(db: AgentDatabase): DeviceContextDao = db.deviceContextDao()
 }
