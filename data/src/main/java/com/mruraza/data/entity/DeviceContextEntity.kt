@@ -1,6 +1,7 @@
 package com.mruraza.data.entity
 
 import androidx.room.Entity
+import com.mruraza.common.model.DeviceContext
 
 @Entity(tableName = "device_context")
 data class DeviceContextEntity(
@@ -10,7 +11,6 @@ data class DeviceContextEntity(
     val locale: String? = null,
     val timezone: String? = null
 ) {
-
     enum class DeviceType {
         PHONE,
         TABLET,
@@ -26,5 +26,23 @@ data class DeviceContextEntity(
         MAC,
         LINUX,
         OTHER
+    }
+
+    fun toDomain(): DeviceContext = DeviceContext(
+        deviceType = DeviceContext.DeviceType.valueOf(deviceType.name),
+        os = DeviceContext.OSType.valueOf(os.name),
+        appVersion = appVersion,
+        locale = locale,
+        timezone = timezone
+    )
+
+    companion object{
+        fun fromDomain(deviceContext: DeviceContext): DeviceContextEntity = DeviceContextEntity(
+            deviceType = DeviceType.valueOf(deviceContext.deviceType.name),
+            os = OSType.valueOf(deviceContext.os.name),
+            appVersion = deviceContext.appVersion,
+            locale = deviceContext.locale,
+            timezone = deviceContext.timezone
+        )
     }
 }
