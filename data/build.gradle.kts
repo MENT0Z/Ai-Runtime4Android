@@ -42,4 +42,7 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    // for the local packages
+    implementation(project(":common"))
 }

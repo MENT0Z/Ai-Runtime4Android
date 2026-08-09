@@ -6,6 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.mruraza.data.dao.AgentSessionDao
+import com.mruraza.data.dao.ConversationTurnDao
 import com.mruraza.data.database.AgentDatabase
 import com.mruraza.data.entity.AgentSessionEntity
 import kotlinx.coroutines.flow.Flow
@@ -36,6 +37,7 @@ class ExampleInstrumentedTest {
 
     private lateinit var agentDatabase: AgentDatabase
     private lateinit var agentSessionDao: AgentSessionDao
+    private lateinit var conversationTurnDao: ConversationTurnDao
 
     @Before
     fun setup() {
@@ -45,6 +47,7 @@ class ExampleInstrumentedTest {
             AgentDatabase::class.java
         ).build()
         agentSessionDao = agentDatabase.agentSessionDao()
+        conversationTurnDao = agentDatabase.conversationTurnDao()
     }
 
     @After

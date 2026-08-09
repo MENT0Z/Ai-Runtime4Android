@@ -3,6 +3,7 @@ package com.mruraza.data.di
 import android.content.Context
 import androidx.room.Room
 import com.mruraza.data.dao.AgentSessionDao
+import com.mruraza.data.dao.ConversationTurnDao
 import com.mruraza.data.database.AgentDatabase
 import dagger.Module
 import dagger.Provides
@@ -25,6 +26,9 @@ object DatabaseModule{
                 name = AgentDatabase.NAME
             ).fallbackToDestructiveMigration(false).build()
     }
+
+    @Provides
+    fun provideConversationTurnDao(db: AgentDatabase): ConversationTurnDao = db.conversationTurnDao()
 
     @Provides
     fun provideAgentSessionDao(db: AgentDatabase): AgentSessionDao = db.agentSessionDao()
