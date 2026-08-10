@@ -2,6 +2,7 @@ package com.mruraza.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.mruraza.data.dao.AgentSessionDao
 import com.mruraza.data.dao.ConversationTurnDao
 import com.mruraza.data.dao.DeviceContextDao
@@ -17,6 +18,7 @@ import com.mruraza.data.entity.UserPreferencesEntity
     version = 1,
     exportSchema = false
 )
+@TypeConverters(RoomConverters::class)
 abstract class AgentDatabase : RoomDatabase() {
     abstract fun agentSessionDao(): AgentSessionDao
     abstract fun conversationTurnDao(): ConversationTurnDao

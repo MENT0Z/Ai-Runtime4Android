@@ -1,10 +1,13 @@
 package com.mruraza.data.entity
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.mruraza.common.model.DeviceContext
 
 @Entity(tableName = "device_context")
 data class DeviceContextEntity(
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
     val deviceType: DeviceType = DeviceType.PHONE,
     val os: OSType = OSType.ANDROID,
     val appVersion: String? = null,
@@ -29,6 +32,7 @@ data class DeviceContextEntity(
     }
 
     fun toDomain(): DeviceContext = DeviceContext(
+        id = id,
         deviceType = DeviceContext.DeviceType.valueOf(deviceType.name),
         os = DeviceContext.OSType.valueOf(os.name),
         appVersion = appVersion,
@@ -38,6 +42,7 @@ data class DeviceContextEntity(
 
     companion object{
         fun fromDomain(deviceContext: DeviceContext): DeviceContextEntity = DeviceContextEntity(
+            id = deviceContext.id,
             deviceType = DeviceType.valueOf(deviceContext.deviceType.name),
             os = OSType.valueOf(deviceContext.os.name),
             appVersion = deviceContext.appVersion,

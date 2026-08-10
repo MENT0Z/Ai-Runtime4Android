@@ -37,6 +37,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx) // Provides coroutines support
     ksp(libs.androidx.room.compiler)
+    implementation(libs.gson)
 
     // DI dagger hilt
     implementation(libs.hilt.android)

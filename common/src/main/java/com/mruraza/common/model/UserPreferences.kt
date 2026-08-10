@@ -1,6 +1,7 @@
 package com.mruraza.common.model
 
 data class UserPreferences(
+    val id: Long = 0,
     val language: String = "en",
     val timezone: String? = null,
     val preferredTone: String? = null,

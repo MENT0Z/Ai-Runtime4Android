@@ -61,4 +61,7 @@ dependencies {
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
+    // lets get the runtime core for now to test
+    implementation(project(":runtime-core"))
+
 }

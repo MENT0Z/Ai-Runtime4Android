@@ -1,6 +1,7 @@
 package com.mruraza.common.model
 
 data class DeviceContext(
+    val id: Long = 0,
     val deviceType: DeviceType = DeviceType.PHONE,
     val os: OSType = OSType.ANDROID,
     val appVersion: String? = null,
