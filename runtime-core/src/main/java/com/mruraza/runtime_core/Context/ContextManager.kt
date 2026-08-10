@@ -13,7 +13,9 @@ package com.mruraza.runtime_core.Context
 * */
 
 
+import android.util.Log
 import com.mruraza.common.model.ContextPackage
+import com.mruraza.common.model.UserPreferences
 import com.mruraza.common.model.WorkflowState
 import com.mruraza.runtime_core.Context.utils.ConversationTurnManager
 import com.mruraza.runtime_core.Context.utils.DeviceContextManager
@@ -147,6 +149,29 @@ class ContextManager @Inject constructor(
 
         return buildContext(sessionId)
     }
+
+    suspend fun refreshAndBuildContextWithDummyUserPref(
+        sessionId: String
+    ): ContextPackage{
+        require(sessionId.isNotBlank()) {
+            "Session ID must not be blank."
+        }
+        val dummyUserPref = UserPreferences(
+            language = "en",
+            timezone = "America/New_York",
+            preferredTone = "formal",
+            responseLength = UserPreferences.ResponseLength.SHORT,
+            preferences = mapOf(
+                "formatted style" to "gen-z style"
+            )
+        )
+        userPreferenceManager.saveUserPreferences(dummyUserPref)
+        Log.d("ContextManager", "Dummy user preferences saved.")
+        deviceContextManager.collectAndSaveDeviceContext()
+        Log.d("ContextManager", "Device context saved.")
+        return getContext(sessionId)
+    }
+
 }
 
 
