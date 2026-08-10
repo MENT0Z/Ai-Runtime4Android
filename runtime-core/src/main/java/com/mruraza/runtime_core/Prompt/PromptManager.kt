@@ -11,6 +11,7 @@ import com.mruraza.common.model.WorkflowState
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import javax.inject.Inject
 
 /**
  * Compiles application context into a structured prompt suitable for an LLM.
@@ -25,10 +26,8 @@ import java.time.format.DateTimeFormatter
  * - Prevent contextual data from being interpreted as higher-priority
  *   instructions.
  */
-class PromptManager(
+class PromptManager @Inject constructor() {
     private val config: PromptManagerConfig = PromptManagerConfig()
-) {
-
     private val timestampFormatter =
         DateTimeFormatter.ISO_OFFSET_DATE_TIME
 

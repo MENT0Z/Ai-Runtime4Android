@@ -16,9 +16,9 @@ import javax.inject.Inject
  */
 class SessionManager @Inject constructor(
     private val sessionRepo: AgentSessionRepo,
-    private val clock: () -> Long = { System.currentTimeMillis() }
-) {
 
+) {
+    private val clock: () -> Long = { System.currentTimeMillis() }
     /**
      * Starts a new agent session.
      *
