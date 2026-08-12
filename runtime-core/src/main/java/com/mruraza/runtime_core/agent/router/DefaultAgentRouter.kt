@@ -3,8 +3,9 @@ package com.mruraza.runtime_core.agent.router
 import com.mruraza.runtime_core.agent.core.Agent
 import com.mruraza.runtime_core.agent.core.AgentTask
 import com.mruraza.runtime_core.agent.registry.AgentRegistry
+import javax.inject.Inject
 
-class DefaultAgentRouter(private val registry: AgentRegistry) : AgentRouter {
+class DefaultAgentRouter @Inject constructor(private val registry: AgentRegistry) : AgentRouter {
     override fun route(task: AgentTask): AgentRoutingDecision {
         val candidates: List<Agent> = registry.getByCapability(task.requiredCapability)
         val agent = candidates.firstOrNull() ?: throw IllegalStateException(

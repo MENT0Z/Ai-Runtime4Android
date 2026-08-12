@@ -4,8 +4,9 @@ import com.mruraza.runtime_core.agent.core.Agent
 import com.mruraza.runtime_core.agent.core.AgentCapability
 import com.mruraza.runtime_core.agent.core.AgentResult
 import com.mruraza.runtime_core.agent.core.AgentTask
+import javax.inject.Inject
 
-class ReminderAgent : Agent {
+class ReminderAgent @Inject constructor() : Agent {
     override val agentId = "reminder"
     override val name = "Reminder Agent"
     override val description = "Creates and manages reminders."

@@ -4,8 +4,9 @@ import com.mruraza.runtime_core.agent.core.Agent
 import com.mruraza.runtime_core.agent.core.AgentCapability
 import com.mruraza.runtime_core.agent.core.AgentResult
 import com.mruraza.runtime_core.agent.core.AgentTask
+import javax.inject.Inject
 
-class MessageAgent : Agent{
+class MessageAgent @Inject constructor() : Agent{
     override val agentId: String = "message"
 
     override val name: String = "Messaging Agent"

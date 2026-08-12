@@ -4,8 +4,9 @@ import com.mruraza.runtime_core.agent.core.Agent
 import com.mruraza.runtime_core.agent.core.AgentCapability
 import com.mruraza.runtime_core.agent.core.AgentResult
 import com.mruraza.runtime_core.agent.core.AgentTask
+import javax.inject.Inject
 
-class CalendarAgent : Agent {
+class CalendarAgent @Inject constructor() : Agent {
 
     override val agentId = "calendar"
 
@@ -33,6 +34,7 @@ class CalendarAgent : Agent {
         task: AgentTask
     ): AgentResult {
         // TODO()
+        // basically for each of the capabilites we need to have the separate way to handle execution
         return AgentResult.Success(
             taskId = task.taskId,
             output = "Ladies and GentleMan your calender is marked for Ment0x bday",

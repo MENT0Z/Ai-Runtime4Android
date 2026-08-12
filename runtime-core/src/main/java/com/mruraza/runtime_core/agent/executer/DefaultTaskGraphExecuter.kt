@@ -2,8 +2,9 @@ package com.mruraza.runtime_core.agent.executer
 
 import com.mruraza.runtime_core.agent.planner.TaskGraph
 import com.mruraza.runtime_core.agent.router.AgentRouter
+import javax.inject.Inject
 
-class DefaultTaskGraphExecuter(
+class DefaultTaskGraphExecuter @Inject constructor(
     private val executer: AgentExecuter,
     private val router: AgentRouter
 ) : TaskGraphExecuter {

@@ -2,8 +2,9 @@ package com.mruraza.runtime_core.agent.registry
 
 import com.mruraza.runtime_core.agent.core.Agent
 import com.mruraza.runtime_core.agent.core.AgentCapability
+import javax.inject.Inject
 
-class DefaultAgentRegistry() : AgentRegistry {
+class DefaultAgentRegistry @Inject constructor() : AgentRegistry {
 
     private val agents = mutableMapOf<String, Agent>()
 
