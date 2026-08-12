@@ -29,8 +29,3 @@ object DummyDataHolder {
         dependencies = listOf()
     )
 }
-
-//AgentCapability(
-//id = "message.send",
-//description = "send message"
-//)
