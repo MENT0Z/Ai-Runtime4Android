@@ -1,5 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.devtools.ksp) // Enable KSP code generation
+    alias(libs.plugins.hiltAndroid)
 }
 
 android {
@@ -31,4 +34,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     // lets take the common
     implementation(project(":common"))
+    // DI dagger hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 }
