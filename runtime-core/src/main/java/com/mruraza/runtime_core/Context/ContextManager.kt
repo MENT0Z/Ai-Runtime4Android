@@ -73,6 +73,7 @@ class ContextManager @Inject constructor(
             "Session ID must not be blank."
         }
 
+        // TODO here need to call this from the shortTermMemo from run-time-services
         val recentHistory = conversationTurnManager
             .observeConversation(sessionId)
             .first()
