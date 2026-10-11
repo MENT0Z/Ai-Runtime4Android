@@ -4,6 +4,7 @@ import com.mruraza.common.model.ConversationTurn
 import com.mruraza.common.model.LongTermMemoEntity
 import javax.inject.Inject
 
+// now context manager have to call this class before building its context
 class MemoryServices @Inject constructor(
     private val shortTermMemory: ShortTermMemory,
     private val longTermMemory: LongTermMemory
