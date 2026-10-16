@@ -5,6 +5,8 @@ import com.mruraza.common.model.LongTermMemoEntity
 import javax.inject.Inject
 import javax.inject.Singleton
 
+// TODO Need to swap this for Room
+
 /**
  * The "something called save" seam. Later: implement this with Room (DAO) and
  * change the binding in MemoryModule. Nothing else needs to change.
