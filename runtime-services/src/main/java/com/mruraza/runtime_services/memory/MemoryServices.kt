@@ -88,20 +88,20 @@ class MemoryServices @Inject constructor(
      * One call that gathers everything: recent chat + memories relevant to [userQuery]
      * + top important memories.
      */
-// TODO Need to call this in the context manager
-//    suspend fun buildContext(
-//        sessionId: String,
-//        userQuery: String,
-//        recentLimit: Int = 20,
-//        relevantLimit: Int = 5,
-//        importantLimit: Int = 5
-//    ): MemoryContext {
-//        val recent = shortTermMemory.getRecentConversations(sessionId, recentLimit)
-//        val relevant = recallRelevant(userQuery, relevantLimit)
-//        val relevantIds = relevant.map { it.id }.toSet()
-//        val important = longTermMemory.getImportant(importantLimit + relevantIds.size)
-//            .filter { it.id !in relevantIds }
-//            .take(importantLimit)
-//        return MemoryContext(recent, relevant, important)
-//    }
+ //TODO Need to call this in the context manager
+    suspend fun buildContext(
+        sessionId: String,
+        userQuery: String,
+        recentLimit: Int = 20,
+        relevantLimit: Int = 5,
+        importantLimit: Int = 5
+    ): MemoryContext {
+        val recent = shortTermMemory.getRecentConversations(sessionId, recentLimit)
+        val relevant = recallRelevant(userQuery, relevantLimit)
+        val relevantIds = relevant.map { it.memoryId }.toSet()
+        val important = longTermMemory.getImportant(importantLimit + relevantIds.size)
+            .filter { it.memoryId !in relevantIds }
+            .take(importantLimit)
+        return MemoryContext(recent, relevant, important)
+    }
 }
