@@ -6,7 +6,8 @@ data class LongTermMemoEntity(
     val type: MemoryType,
     val importance: Float,
     val createdAt: Long,
-    val lastAccessedAt: Long
+    val lastAccessedAt: Long,
+    val accessCount: Int = 0
 ){
     enum class MemoryType{
          FACT,
