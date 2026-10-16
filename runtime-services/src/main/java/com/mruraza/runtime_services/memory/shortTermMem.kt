@@ -13,4 +13,13 @@ interface ShortTermMemory{
     suspend fun clear(
         sessionId: String
     )
+
+    suspend fun clearAll()
+
+    suspend fun getSessionIds(): List<String>
+
+    suspend fun size(sessionId: String): Int
+
+    /** Removes and returns the last turn (useful for "regenerate" / undo). */
+    suspend fun removeLast(sessionId: String): ConversationTurn?
 }
