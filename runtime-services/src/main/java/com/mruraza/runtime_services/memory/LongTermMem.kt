@@ -9,7 +9,7 @@ interface LongTermMemory{
     suspend fun getImportant(limit: Int = 20): List<LongTermMemoEntity>
     suspend fun updateAccess(memoryId: String)
     suspend fun search(query: String, limit: Int = 5): List<LongTermMemoEntity>
-    // to get by type of the query
+    // to get by tags of the query
     suspend fun getByTag(tag: String, limit: Int = 5): List<LongTermMemoEntity>
     suspend fun getRecent(limit: Int = 20) : List<LongTermMemoEntity>
     suspend fun getAll(): List<LongTermMemoEntity>

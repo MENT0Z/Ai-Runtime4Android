@@ -22,13 +22,13 @@ class MemoryRepo @Inject constructor(
     /** Must be called inside the mutex. */
     private suspend fun ensureLoaded() {
         if (loaded) return
-        dataSource.getAll().forEach { cache[it.id] = it }
+        dataSource.getAll().forEach { cache[it.memoryId] = it }
         loaded = true
     }
 
     override suspend fun save(memory: LongTermMemoEntity) = mutex.withLock {
         ensureLoaded()
-        cache[memory.id] = memory
+        cache[memory.memoryId] = memory
         dataSource.save(memory)
     }
 

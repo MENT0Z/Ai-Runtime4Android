@@ -22,7 +22,7 @@ interface MemoryDataSource {
 class InMemoryMemoryDataSource @Inject constructor() : MemoryDataSource {
     private val store = HashMap<String, LongTermMemoEntity>()
 
-    override suspend fun save(memory: LongTermMemoEntity) { synchronized(store) { store[memory.id] = memory } }
+    override suspend fun save(memory: LongTermMemoEntity) { synchronized(store) { store[memory.memoryId] = memory } }
     override suspend fun get(memoryId: String) = synchronized(store) { store[memoryId] }
     override suspend fun delete(memoryId: String) { synchronized(store) { store.remove(memoryId) } }
     override suspend fun getAll() = synchronized(store) { store.values.toList() }

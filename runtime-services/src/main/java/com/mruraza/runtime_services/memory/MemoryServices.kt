@@ -27,7 +27,8 @@ class MemoryServices @Inject constructor(
     suspend fun remember(
         content: String,
         importance: Float = 0.5f,
-        type: LongTermMemoEntity.MemoryType = LongTermMemoEntity.MemoryType.FACT
+        type: LongTermMemoEntity.MemoryType = LongTermMemoEntity.MemoryType.FACT,
+        tags: List<String> = emptyList()
     ): String? {
         if (content.isBlank()) return null
         val now = System.currentTimeMillis()
@@ -36,6 +37,7 @@ class MemoryServices @Inject constructor(
             LongTermMemoEntity(
                 memoryId = id,
                 content = content.trim(),
+                tags = tags,
                 importance = importance.coerceIn(0f, 1f),
                 type = type,
                 createdAt = now,
